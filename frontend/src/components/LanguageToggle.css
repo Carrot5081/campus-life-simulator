@@ -1,0 +1,33 @@
+.lang-toggle {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background: rgba(56, 120, 220, 0.08);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 5px 10px;
+  color: var(--gray);
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  cursor: pointer;
+  transition: border-color var(--transition), background var(--transition);
+  white-space: nowrap;
+}
+
+.lang-toggle:hover {
+  border-color: var(--blue);
+  background: rgba(56, 120, 220, 0.15);
+  color: var(--white);
+}
+
+.lang-toggle .active {
+  color: var(--blue);
+  text-shadow: 0 0 8px var(--blue-glow);
+}
+
+.lang-toggle .divider {
+  color: var(--gray-dim);
+  font-size: 0.7rem;
+}

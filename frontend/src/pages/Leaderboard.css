@@ -1,0 +1,362 @@
+.lb-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding: 0 24px 48px;
+  max-width: 720px;
+  margin: 0 auto;
+  box-sizing: border-box;
+  gap: 16px;
+  position: relative;
+}
+
+.lb-bg-glow {
+  position: fixed;
+  top: -10%;
+  right: -10%;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(ellipse, rgba(239,159,39,0.06) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.lb-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 0 0;
+  position: relative;
+  z-index: 1;
+}
+
+.lb-back {
+  font-size: 0.78rem;
+  color: var(--gray);
+  cursor: pointer;
+  letter-spacing: 0.08em;
+  transition: color var(--transition);
+  white-space: nowrap;
+}
+.lb-back:hover { color: var(--blue); }
+
+.lb-title {
+  font-size: 1.1rem;
+  letter-spacing: 0.2em;
+  color: var(--amber);
+  text-shadow: 0 0 20px var(--amber-glow);
+}
+
+/* ── tabs ── */
+.lb-tabs {
+  display: flex;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 1;
+}
+
+.lb-tab {
+  flex: 1;
+  padding: 9px 16px;
+  background: transparent;
+  border: none;
+  color: var(--gray);
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background var(--transition), color var(--transition);
+  letter-spacing: 0.06em;
+}
+
+.lb-tab.active {
+  background: rgba(56,120,220,0.18);
+  color: var(--blue);
+}
+
+.lb-tab:hover:not(.active) {
+  background: rgba(255,255,255,0.04);
+  color: var(--white);
+}
+
+/* ── my rank ── */
+.lb-myrank {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 18px;
+  position: relative;
+  z-index: 1;
+}
+
+.myrank-label { font-size: 0.65rem; letter-spacing: 0.14em; flex-shrink: 0; }
+.myrank-num   { font-size: 1.4rem; font-weight: 700; line-height: 1; flex-shrink: 0; }
+.myrank-name  { flex: 1; font-size: 0.95rem; font-weight: 600; }
+.myrank-score { font-size: 1.1rem; font-weight: 700; flex-shrink: 0; }
+
+/* ── rankings table ── */
+.lb-table-wrap { position: relative; z-index: 1; }
+
+.lb-loading, .lb-empty {
+  text-align: center;
+  padding: 48px 0;
+  color: var(--gray);
+  font-size: 0.9rem;
+  letter-spacing: 0.08em;
+}
+
+.lb-table { overflow: hidden; padding: 0; }
+
+.lb-thead {
+  display: grid;
+  grid-template-columns: 44px 1fr 100px 80px 60px;
+  padding: 10px 18px;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: var(--gray);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-family: var(--font-mono);
+}
+
+.lb-row {
+  display: grid;
+  grid-template-columns: 44px 1fr 100px 80px 60px;
+  padding: 12px 18px;
+  border-bottom: 1px solid rgba(255,255,255,0.03);
+  align-items: center;
+  transition: background var(--transition);
+}
+
+.lb-row:last-child { border-bottom: none; }
+.lb-row:hover { background: rgba(56,120,220,0.05); }
+.lb-row.me { background: rgba(56,120,220,0.08); border-left: 2px solid var(--blue); }
+
+.lb-rank  { font-size: 0.85rem; font-weight: 700; letter-spacing: 0.06em; }
+.lb-name  { font-size: 0.92rem; font-weight: 600; color: var(--white); display: flex; align-items: center; gap: 8px; }
+.lb-score { font-size: 0.92rem; font-weight: 700; letter-spacing: 0.04em; }
+.lb-rounds { font-size: 0.85rem; color: var(--white); }
+.lb-games { font-size: 0.78rem; }
+
+.me-tag {
+  font-size: 0.6rem;
+  font-family: var(--font-mono);
+  background: rgba(56,120,220,0.2);
+  border: 1px solid var(--blue);
+  border-radius: 3px;
+  padding: 1px 5px;
+  color: var(--blue);
+}
+
+/* ── Stats tab ── */
+.stats-section {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  position: relative;
+  z-index: 1;
+}
+
+.stats-overview {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+.stat-card {
+  padding: 14px 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  text-align: center;
+}
+
+.stat-card-num {
+  font-size: 1.6rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.stat-card-label {
+  font-size: 0.6rem;
+  letter-spacing: 0.1em;
+  text-align: center;
+}
+
+/* commentary */
+.stats-commentary {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 16px 18px;
+}
+
+.commentary-icon { font-size: 1.8rem; flex-shrink: 0; }
+
+.commentary-body { display: flex; flex-direction: column; gap: 6px; }
+
+.commentary-main {
+  font-size: 0.92rem;
+  line-height: 1.6;
+  color: rgba(232,238,255,0.88);
+}
+
+.commentary-sub {
+  font-size: 0.82rem;
+  line-height: 1.5;
+  color: var(--gray);
+}
+
+/* death bars */
+.stats-deaths { padding: 16px 18px; }
+
+.section-title {
+  font-size: 0.65rem;
+  letter-spacing: 0.16em;
+  color: var(--gray);
+  font-family: var(--font-mono);
+  font-weight: 400;
+  margin-bottom: 14px;
+  text-transform: uppercase;
+}
+
+.death-bars { display: flex; flex-direction: column; gap: 12px; }
+
+.death-bar-row { display: flex; align-items: flex-start; gap: 10px; }
+
+.death-bar-emoji { font-size: 1.2rem; flex-shrink: 0; margin-top: 2px; }
+
+.death-bar-body { flex: 1; display: flex; flex-direction: column; gap: 5px; }
+
+.death-bar-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.death-bar-title { font-size: 0.88rem; font-weight: 600; color: var(--white); }
+.death-bar-pct   { font-size: 0.82rem; color: var(--amber); }
+
+.death-bar-track {
+  height: 5px;
+  background: rgba(255,255,255,0.06);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.death-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--red-glow), var(--red));
+  border-radius: 3px;
+  transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.death-bar-count { font-size: 0.68rem; }
+
+/* final avgs */
+.stats-final-avgs { padding: 16px 18px; }
+
+.final-avgs-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.final-avg-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  background: rgba(255,255,255,0.02);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.final-avg-icon  { font-size: 1rem; flex-shrink: 0; }
+.final-avg-label { font-size: 0.82rem; font-weight: 600; flex: 1; }
+.final-avg-val   { font-size: 1.1rem; font-weight: 700; color: var(--white); }
+
+/* hot rounds */
+.stats-hot-rounds { padding: 16px 18px; }
+
+.hot-rounds-list { display: flex; flex-direction: column; gap: 8px; }
+
+.hot-round-item {
+  display: grid;
+  grid-template-columns: 40px 1fr 60px;
+  align-items: center;
+  gap: 10px;
+}
+
+.hot-round-num { font-size: 0.88rem; font-weight: 700; }
+
+.hot-round-bar-wrap {
+  height: 5px;
+  background: rgba(255,255,255,0.06);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.hot-round-bar {
+  height: 100%;
+  background: linear-gradient(90deg, var(--purple), var(--blue));
+  border-radius: 3px;
+  transition: width 0.8s ease;
+}
+
+.hot-round-cnt { font-size: 0.72rem; text-align: right; }
+
+/* ── 手机端 ── */
+@media (max-width: 768px) {
+  .lb-page {
+    padding: 0 14px 32px;
+    gap: 12px;
+  }
+
+  .lb-header { padding: 12px 0 0; }
+
+  .lb-title { font-size: 0.9rem; letter-spacing: 0.14em; }
+  .lb-back  { font-size: 0.72rem; }
+
+  /* 排行表格：隐藏"局数"列，4列布局 */
+  .lb-thead,
+  .lb-row {
+    grid-template-columns: 36px 1fr 88px 68px;
+    padding: 10px 14px;
+  }
+
+  .lb-games { display: none; }
+
+  .lb-rank   { font-size: 0.78rem; }
+  .lb-name   { font-size: 0.85rem; gap: 6px; }
+  .lb-score  { font-size: 0.85rem; }
+  .lb-rounds { font-size: 0.78rem; }
+
+  .lb-myrank { padding: 10px 14px; gap: 10px; }
+  .myrank-num { font-size: 1.2rem; }
+  .myrank-score { font-size: 0.95rem; }
+
+  /* Stats: 4列 → 2×2 */
+  .stats-overview { grid-template-columns: repeat(2, 1fr); }
+
+  .stat-card-num { font-size: 1.35rem; }
+
+  .stats-commentary { padding: 12px 14px; }
+  .commentary-main  { font-size: 0.85rem; }
+  .commentary-sub   { font-size: 0.78rem; }
+
+  .stats-deaths     { padding: 12px 14px; }
+  .stats-final-avgs { padding: 12px 14px; }
+  .stats-hot-rounds { padding: 12px 14px; }
+}
+
+@media (max-width: 380px) {
+  .lb-page { padding: 0 10px 24px; }
+  .lb-thead,
+  .lb-row   { padding: 9px 10px; gap: 6px; }
+}

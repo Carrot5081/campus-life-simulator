@@ -1,0 +1,182 @@
+/* ── Overlay lifecycle: fade in → hold → fade out ── */
+.rfe-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 80;
+  background: rgba(6, 9, 18, 0.97);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: rfe-lifecycle 1.9s ease forwards;
+  pointer-events: none;
+}
+
+@keyframes rfe-lifecycle {
+  0%    { opacity: 0; }
+  8%    { opacity: 1; }
+  78%   { opacity: 1; }
+  100%  { opacity: 0; }
+}
+
+/* ── Scan lines ── */
+.rfe-scan {
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 3px,
+    rgba(127, 119, 221, 0.04) 3px,
+    rgba(127, 119, 221, 0.04) 4px
+  );
+  animation: rfe-scan-move 0.25s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes rfe-scan-move {
+  from { background-position: 0 0; }
+  to   { background-position: 0 4px; }
+}
+
+/* ── Corner accents ── */
+.rfe-corner {
+  position: absolute;
+  width: 36px;
+  height: 36px;
+  border-color: var(--purple);
+  border-style: solid;
+  opacity: 0.7;
+  animation: rfe-corner-in 0.25s ease-out both;
+  animation-delay: 0.1s;
+}
+
+.rfe-tl { top: 24px;    left: 24px;   border-width: 3px 0 0 3px; }
+.rfe-tr { top: 24px;    right: 24px;  border-width: 3px 3px 0 0; }
+.rfe-bl { bottom: 24px; left: 24px;   border-width: 0 0 3px 3px; }
+.rfe-br { bottom: 24px; right: 24px;  border-width: 0 3px 3px 0; }
+
+@keyframes rfe-corner-in {
+  from { opacity: 0; transform: scale(0.5); }
+  to   { opacity: 0.7; transform: scale(1); }
+}
+
+/* ── Center content ── */
+.rfe-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  text-align: center;
+  animation: rfe-content-in 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+  animation-delay: 0.08s;
+}
+
+@keyframes rfe-content-in {
+  from { opacity: 0; transform: scale(0.85) translateY(16px); }
+  to   { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.rfe-label {
+  font-size: 0.72rem;
+  color: var(--gray);
+  letter-spacing: 0.2em;
+}
+
+/* main text row */
+.rfe-main-text {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.rfe-emoji {
+  font-size: 2.2rem;
+  animation: rfe-emoji-bounce 0.5s ease-out both;
+  animation-delay: 0.2s;
+}
+
+@keyframes rfe-emoji-bounce {
+  0%   { transform: scale(0) rotate(-20deg); opacity: 0; }
+  60%  { transform: scale(1.2) rotate(5deg); }
+  100% { transform: scale(1) rotate(0deg); opacity: 1; }
+}
+
+.rfe-title {
+  font-family: var(--font-title);
+  font-size: 2.8rem;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  color: var(--purple);
+  text-shadow:
+    0 0 20px var(--purple-glow),
+    0 0 50px rgba(127, 119, 221, 0.4);
+  animation: rfe-glitch 0.5s step-end infinite;
+  animation-delay: 0.3s;
+}
+
+@keyframes rfe-glitch {
+  0%, 100% {
+    text-shadow: 0 0 20px var(--purple-glow), 0 0 50px rgba(127,119,221,0.4);
+  }
+  15% {
+    text-shadow: -4px 0 var(--blue), 4px 0 var(--red), 0 0 20px var(--purple-glow);
+    transform: translateX(-2px);
+  }
+  30% {
+    text-shadow: 0 0 20px var(--purple-glow), 0 0 50px rgba(127,119,221,0.4);
+    transform: translateX(0);
+  }
+  65% {
+    text-shadow: 3px 0 var(--teal), -3px 0 var(--amber), 0 0 20px var(--purple-glow);
+    transform: translateX(1px);
+  }
+  80% {
+    text-shadow: 0 0 20px var(--purple-glow), 0 0 50px rgba(127,119,221,0.4);
+    transform: translateX(0);
+  }
+}
+
+/* sub info */
+.rfe-sub {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  align-items: center;
+}
+
+.rfe-prob {
+  font-size: 0.78rem;
+  color: var(--amber);
+  letter-spacing: 0.1em;
+  padding: 3px 12px;
+  border: 1px solid rgba(239,159,39,0.35);
+  border-radius: 20px;
+  background: rgba(239,159,39,0.08);
+}
+
+.rfe-cond {
+  font-size: 0.7rem;
+  color: var(--gray);
+  letter-spacing: 0.08em;
+}
+
+/* loading dots */
+.rfe-dots {
+  display: flex;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.rfe-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--purple);
+  animation: rfe-dot-pulse 0.8s ease-in-out infinite;
+  opacity: 0.5;
+}
+
+@keyframes rfe-dot-pulse {
+  0%, 100% { transform: scale(0.7); opacity: 0.3; }
+  50%       { transform: scale(1.2); opacity: 1; box-shadow: 0 0 8px var(--purple-glow); }
+}

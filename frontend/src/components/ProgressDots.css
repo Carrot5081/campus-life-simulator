@@ -1,0 +1,34 @@
+.progress-dots {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.pdot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--gray-dim);
+  border: 1px solid transparent;
+  transition: background var(--transition), box-shadow var(--transition);
+}
+
+.pdot.filled {
+  background: var(--blue-dim);
+  border-color: var(--blue);
+}
+
+.pdot.active {
+  background: var(--blue);
+  box-shadow: 0 0 8px var(--blue-glow);
+  animation: btn-glow-pulse 1.8s ease-in-out infinite;
+}
+
+.pdot-extra {
+  color: var(--amber);
+  font-size: 0.7rem;
+  font-weight: 600;
+  margin-left: 4px;
+}

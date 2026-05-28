@@ -1,0 +1,10 @@
+.status-bars {
+  padding: 14px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+@media (max-width: 768px) {
+  .status-bars { padding: 10px 14px; gap: 1px; }
+}

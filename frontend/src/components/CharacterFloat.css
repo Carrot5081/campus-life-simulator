@@ -1,0 +1,56 @@
+/* ── Compact header mode ── */
+.char-float-compact {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: all var(--transition);
+}
+
+.char-float-compact.char-float-critical {
+  animation: float-crit-shake 0.5s ease-in-out infinite;
+}
+
+.char-float-compact-label {
+  font-size: 0.72rem;
+  font-family: var(--font-body);
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  white-space: nowrap;
+  transition: color var(--transition);
+  max-width: 100px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ── Standalone card mode (legacy, kept for reference) ── */
+.char-float {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  transition: all var(--transition);
+}
+
+.char-float.char-float-critical {
+  animation: float-crit-shake 0.5s ease-in-out infinite;
+}
+
+@keyframes float-crit-shake {
+  0%, 100% { transform: translateX(0); }
+  25%       { transform: translateX(-2px); }
+  75%       { transform: translateX(2px); }
+}
+
+.char-float-inner {
+  animation: char-idle-bob 3.2s ease-in-out infinite;
+}
+
+.char-float-label {
+  font-size: 0.6rem;
+  letter-spacing: 0.06em;
+  text-align: center;
+  font-weight: 600;
+  white-space: nowrap;
+  transition: color var(--transition);
+  font-family: var(--font-body);
+}

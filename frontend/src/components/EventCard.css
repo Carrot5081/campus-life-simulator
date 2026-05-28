@@ -1,0 +1,167 @@
+.event-card {
+  padding: 26px 22px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  min-height: 280px;
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* ── 顶部类别高亮条 ── */
+.card-accent-stripe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  opacity: 0.85;
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+}
+
+/* ── 大号 emoji 水印 ── */
+.card-watermark {
+  position: absolute;
+  bottom: -8px;
+  right: -4px;
+  font-size: 7.5rem;
+  line-height: 1;
+  opacity: 0.07;
+  filter: blur(1.5px);
+  pointer-events: none;
+  user-select: none;
+  transition: opacity 0.3s ease;
+}
+
+.event-card:hover .card-watermark {
+  opacity: 0.11;
+}
+
+/* ── card animations ── */
+.event-card.card-entering {
+  animation: card-enter 0.45s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+.event-card.card-exit-left {
+  animation: card-exit-left 0.4s cubic-bezier(0.4, 0, 1, 1) both;
+  pointer-events: none;
+}
+.event-card.card-exit-right {
+  animation: card-exit-right 0.4s cubic-bezier(0.4, 0, 1, 1) both;
+  pointer-events: none;
+}
+
+/* skeleton placeholder */
+.event-card.skeleton {
+  min-height: 280px;
+  opacity: 0.3;
+}
+
+/* ── type badge ── */
+.event-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  width: fit-content;
+  font-family: var(--font-mono);
+}
+
+.badge-special {
+  background: rgba(239, 159, 39, 0.15);
+  border: 1px solid rgba(239, 159, 39, 0.55);
+  color: var(--amber);
+  box-shadow: 0 0 12px rgba(239, 159, 39, 0.3);
+  animation: badge-special-pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes badge-special-pulse {
+  0%, 100% { box-shadow: 0 0 8px rgba(239,159,39,0.25); }
+  50%       { box-shadow: 0 0 18px rgba(239,159,39,0.5); }
+}
+
+.badge-fixed {
+  background: rgba(56, 120, 220, 0.15);
+  border: 1px solid rgba(56, 120, 220, 0.4);
+  color: var(--blue);
+  box-shadow: 0 0 8px rgba(56, 120, 220, 0.2);
+}
+
+.badge-random {
+  background: rgba(127, 119, 221, 0.15);
+  border: 1px solid rgba(127, 119, 221, 0.4);
+  color: var(--purple);
+  box-shadow: 0 0 8px rgba(127, 119, 221, 0.2);
+}
+
+/* ── condition ── */
+.event-condition {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.72rem;
+}
+
+.cond-label {
+  color: var(--gray);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 0.64rem;
+}
+
+.cond-value {
+  color: var(--amber);
+  font-size: 0.78rem;
+}
+
+/* ── title ── */
+.event-title {
+  font-family: var(--font-body);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--white);
+  letter-spacing: 0.02em;
+  line-height: 1.3;
+}
+
+/* ── description ── */
+.event-desc {
+  font-size: 0.95rem;
+  line-height: 1.65;
+  color: rgba(232, 238, 255, 0.75);
+  flex: 1;
+}
+
+/* ── difficulty dots ── */
+.event-difficulty {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  margin-top: auto;
+}
+
+.diff-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--gray-dim);
+  transition: background var(--transition), box-shadow var(--transition);
+}
+
+/* ── 手机端 ── */
+@media (max-width: 768px) {
+  .event-card {
+    padding: 20px 16px 16px;
+    gap: 10px;
+    min-height: 200px;  /* 手机上卡片高度更紧凑 */
+  }
+  .card-watermark { font-size: 5rem; }
+  .event-title { font-size: 1.08rem; }
+  .event-desc  { font-size: 0.88rem; line-height: 1.55; }
+  .event-badge { font-size: 0.62rem; padding: 3px 8px; }
+}

@@ -1,0 +1,97 @@
+.status-bar-row {
+  display: grid;
+  grid-template-columns: 18px 72px 1fr 34px 38px;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 0;
+  transition: opacity var(--transition);
+}
+
+.status-bar-row.danger {
+  animation: danger-pulse 1.6s ease-in-out infinite;
+  border-radius: 4px;
+  padding: 5px 6px;
+}
+
+.status-icon {
+  font-size: 0.9rem;
+  line-height: 1;
+  text-align: center;
+}
+
+.status-label {
+  font-size: 0.72rem;
+  color: var(--gray);
+  letter-spacing: 0.12em;
+  font-weight: 600;
+}
+
+.status-track {
+  position: relative;
+  height: 6px;
+  background: rgba(255,255,255,0.06);
+  border-radius: 3px;
+  overflow: visible;
+}
+
+.status-fill-preview,
+.status-fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  border-radius: 3px;
+  transition: width 0.55s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.status-fill-preview {
+  transition: width 0.2s ease;
+  z-index: 1;
+  border-radius: 3px;
+}
+
+.status-fill {
+  z-index: 2;
+}
+
+.status-fill.bar-flash-up {
+  animation: bar-flash-up 0.6s ease-out;
+}
+.status-fill.bar-flash-down {
+  animation: bar-flash-down 0.6s ease-out;
+}
+
+.status-value {
+  font-size: 0.82rem;
+  text-align: right;
+  color: var(--white);
+  letter-spacing: 0.04em;
+  transition: color var(--transition);
+}
+
+.status-value.value-up   { animation: value-up   0.6s ease-out; }
+.status-value.value-down { animation: value-down 0.6s ease-out; }
+
+.status-preview-delta {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-align: right;
+  min-width: 32px;
+}
+
+.status-preview-delta.pos { color: var(--teal); }
+.status-preview-delta.neg { color: var(--red); }
+
+/* ── 手机端 ── */
+@media (max-width: 768px) {
+  .status-bar-row {
+    grid-template-columns: 16px 58px 1fr 28px 34px;
+    gap: 6px;
+    padding: 4px 0;
+  }
+  .status-icon  { font-size: 0.8rem; }
+  .status-label { font-size: 0.65rem; letter-spacing: 0.08em; }
+  .status-track { height: 5px; }
+  .status-value { font-size: 0.75rem; }
+  .status-preview-delta { font-size: 0.65rem; min-width: 28px; }
+}
